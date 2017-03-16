@@ -1,7 +1,7 @@
 # act-webpack-build
 简易webpack构建( 以webpack2为基础 )
 
-- css的模块化，预处理器的编译。启用 `autoprefixer` 自动添加浏览器前缀
+- css的模块化，预处理器的编译。启用 `autoprefixer` 自动添加浏览器前缀
 - 支持js、css、scss等代码检查、打包、压缩混淆、图片转base64等
 - 静态资源按需自动注入到html中，并可自动加上hash值
 - 快速编译，自动刷新。
