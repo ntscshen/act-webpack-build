@@ -2,7 +2,7 @@
 简易webpack构建( 以webpack2为基础 )
 
 - 页面自动引入 `css` 和 `js` 文件。
-  - 当前文件的hash值变更都会导致当前文件名的改变以解决静态资源缓存问题、资源引用由内部自动完成
+  - 解决静态资源缓存问题、资源引用由内部自动完成( 添加当前文件变更hash )
 - `css` 预编译
   - 启动 [autoprefixer](https://github.com/postcss/autoprefixer) 自动添加前缀
   - 启动 [cssnano](https://www.npmjs.com/package/cssnano) 执行css优化
@@ -11,7 +11,7 @@
   - 快速打包编译,自动刷新
   - 公共 `Utils` 组件抽离打包
   - 压缩混淆打包
-- 图片压缩( 8K下图片自动转换base64 )
+- 图片压缩( 8K以下图片自动转换base64 )
 - 功能标识,根据开发/生产环境进行不同配置的打包
 - 常用的框架和类库的单独打包( 如:jQuery )
 - 支持ES6特性、支持模块化( `import` 、 `require` 等)
