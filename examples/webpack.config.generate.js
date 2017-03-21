@@ -31,7 +31,7 @@ module.exports = function(options) {
                 inline: true
             }
         }
-    }), new ExtractTextPlugin('[name].css'), new OptimizeCssAssetsPlugin());
+    }));
     var dev = options.dev !== undefined
         ? options.dev
         : true;
@@ -41,6 +41,7 @@ module.exports = function(options) {
             template: __dirname + '/src/index.html',
             inject: 'body'
         }));
+        plugins.push(new ExtractTextPlugin('[name].css'));
         // webpackConfig.devtool = 'eval-source-map';
         devtools = 'eval-source-map'; // dev调试模式
     } else { // online
@@ -61,6 +62,8 @@ module.exports = function(options) {
                 minifyJS: true
             }
         }));
+        plugins.push(new ExtractTextPlugin('[name].min.css'));
+        plugins.push(new OptimizeCssAssetsPlugin());
     }
     var webpackConfig = {
         devtool: devtools, // 便于调试
