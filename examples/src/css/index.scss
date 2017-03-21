@@ -1,0 +1,24 @@
+@import "base";
+
+.sfb-activ-wrap {
+    position: relative;
+
+    .sfb-activ-rule {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 50px;
+        height: 50px;
+        background: url('../images/baidu.gif') no-repeat;
+        border: 1px solid #3c3c3c;
+
+        span {
+            color: red;
+            font-size: 28px;
+        }
+    }
+}
+
+.body {
+    background: url('../images/atom_code.png') no-repeat;
+}
