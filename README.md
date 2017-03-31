@@ -1,5 +1,5 @@
 # act-webpack-build
-[传送门：Ashley Nolan的前端问卷调查(2016)](https://ashleynolan.co.uk/blog/frontend-tooling-survey-2016-results)
+[传送门：Ashley Nolan的前端(2016)问卷调查](https://ashleynolan.co.uk/blog/frontend-tooling-survey-2016-results)
 
 简易webpack构建( webpack2 )
 
@@ -65,4 +65,4 @@
 
 ##### 环境约定
 
->  当前本机的：node版本 `6.10.0
+>  测试机node版本 `6.10.0`
