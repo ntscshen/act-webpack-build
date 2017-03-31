@@ -7,5 +7,5 @@ function ntscshen() {
 ntscshen();
 
 document.getElementById('ntscshen').onclick = function() {
-    alert('ntscshen1333');
+    alert('ntscshen1333456');
 };

@@ -13,19 +13,17 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const UglifyjsWebpackPlugin = require('uglifyjs-webpack-plugin');
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
-// module.exports = {
 module.exports = function(options) {
     var ACT_ENTRY = __dirname + '/src/' + options + '/js/index.js';
     var ACT_OUTPUT = __dirname + '/dist/' + options + '/';
-    // var ACT_HTML_PLUGIN = __dirname + '/src/' + options + 'index.html';
-    // var ACT_OUTPUT = __dirname + '/dist/' + options;
-    // console.log('当前文件路径：' + __dirname);
+    var ACT_HTML_PLUGIN = __dirname + '/src/' + options + '/index.html';
+
     var webpackConfig = {
         entry: ACT_ENTRY,
         output: {
             path: ACT_OUTPUT,
             // path: __dirname + '/dist/',
-            filename: '[name].js'
+            filename: 'js/[name].js'
         },
         module: {
             rules: [
@@ -70,6 +68,13 @@ module.exports = function(options) {
                             }
                         }
                     ]
+                }, {
+                    test: /\.js$/,
+                    loader: 'babel-loader',
+                    exclude: path.resolve(__dirname, 'node_modules'), // 解析成一个绝对路径
+                    options: {
+                        presets: ['es2015']
+                    }
                 }
             ]
         },
@@ -77,12 +82,15 @@ module.exports = function(options) {
             new webpack.HotModuleReplacementPlugin(),
             new HtmlWebpackPlugin({
                 filename: 'index.html',
-                // template: ACT_HTML_PLUGIN,
+                // template: __dirname + '/src/index.html',
+                template: ACT_HTML_PLUGIN,
                 inject: 'body'
             }),
             new webpack.DefinePlugin({
                 'process.env': {
-                    NODE_ENV: JSON.stringify('production')
+                    NODE_ENV: JSON.stringify('production'),
+                    NODE_DEV: JSON.stringify('dev'),
+                    NODE_SERVER: JSON.stringify('server')
                 }
             }),
             new BrowserSyncPlugin({
@@ -92,7 +100,7 @@ module.exports = function(options) {
             }, {reload: false})
         ],
         devServer: {
-            contentBase: __dirname + '/dist',
+            contentBase: __dirname + '/dist/' + options,
             port: 8088,
             inline: true,
             hot: true
@@ -102,9 +110,11 @@ module.exports = function(options) {
     // 开发和生成环境的区分
     if (process.env.NODE_ENV === 'production') { // 生产环境
         console.log('--- --- --- --- --- ---  --- --- --- 生产环境 --- --- --- --- --- ---  --- --- --- ');
+        console.log('--- --- --- --- --- ---  --- --- --- 项目名称：' + global.act_name);
+        console.log('--- --- --- --- --- ---  --- --- --- 生产环境 --- --- --- --- --- ---  --- --- --- ');
         webpackConfig.plugins = (webpackConfig.plugins || []).concat([ // 严谨
             new UglifyjsWebpackPlugin(),
-            new ExtractTextPlugin('./css/index.min.css')
+            new ExtractTextPlugin('./index.min.css')
         ]);
         webpackConfig.module.rules.shift();
         webpackConfig.module.rules.use = webpackConfig.module.rules.unshift({
@@ -136,6 +146,8 @@ module.exports = function(options) {
             })
         });
     } else { // 开发环境
+        console.log('--- --- --- --- --- ---  --- --- --- 开发环境 --- --- --- --- --- ---  --- --- --- ');
+        console.log('--- --- --- --- --- ---  --- --- --- 项目名称：' + global.act_name);
         console.log('--- --- --- --- --- ---  --- --- --- 开发环境 --- --- --- --- --- ---  --- --- --- ');
         module.exports.devtool = 'source-map';
     }
