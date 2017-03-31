@@ -3,7 +3,8 @@
 
 简易webpack构建( webpack2 )
 
- .
+```javascript
+.
  ├── dist // 打包后的文件
  │   └── 2017-03-31-414-act-test
  │       ├── css
@@ -25,6 +26,8 @@
  │           └── index.js // 入口JS文件
  ├── webpack.config.js
  └── webpack.config.lib.js
+
+```
 
 - 页面自动引入 `css` 和 `js` 文件。
 - `css` 预编译添加前缀、优化。
