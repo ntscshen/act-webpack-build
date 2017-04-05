@@ -41,7 +41,6 @@
 ├── upcache.json // 上传后的缓存文件
 ├── webpack.config.js // 配置活动名文件
 └── webpack.config.lib.js // webpack配置文件
-
 ```
 
 ### 功能说明
@@ -66,3 +65,5 @@
 ##### 环境约定
 
 >  测试机node版本 `6.10.0`
+
+注： `up.js` 内网上传文件( 删除 )
