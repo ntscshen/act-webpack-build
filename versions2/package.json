@@ -6,9 +6,9 @@
     "scripts": {
         "dev": "NODE_DEV=dev webpack --progress",
         "online": "NODE_ENV=production webpack --colors --progress",
-        "clean": "rimraf dist/*",
+        "clean": "rimraf dist",
         "up": "gulp",
-        "clean-up":"rimraf assets/*",
+        "clean-up":"rimraf assets",
         "server": "NODE_SERVER=server webpack-dev-server --watch"
     },
     "keywords": [],
